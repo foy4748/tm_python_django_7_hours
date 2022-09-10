@@ -19,5 +19,9 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('base.urls')),
-    path('room/', include('base.urls')),
 ]
+
+
+    # This is what I did wrong 
+    # This was causing wrong routing
+    # path('room/', include('base.urls')),
