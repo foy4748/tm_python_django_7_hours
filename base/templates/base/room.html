@@ -1,6 +1,10 @@
 {% extends "index.html" %}
 
 {% block content %}
-<h1>ROOM</h1>
-<h1>{{room.id}}. {{room.name}}</h1>
+<article class="container">
+	<h1>{{room.id}}. {{room.name}}</h1>
+	<p>{{room.description}}</p>
+
+</article>
+
 {% endblock %}
