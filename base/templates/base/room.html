@@ -2,9 +2,19 @@
 
 {% block content %}
 <article class="container">
+	<h1>{{room.topic.name}}</h1>
 	<h1>{{room.id}}. {{room.name}}</h1>
+	<h2>Hosted by: {{room.host.username}}</h2>
+	<h2 class="my-3">Descriptions</h2>
 	<p>{{room.description}}</p>
-
+</article>
+<article class="container">
+	{% for message in messages %}
+	<div class="container">
+		<h2>{{message.user}}</h2>
+		<p>{{message.body}}</p>
+	</div>
+	{% endfor %}
 </article>
 
 {% endblock %}
