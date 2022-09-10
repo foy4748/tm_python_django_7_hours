@@ -23,7 +23,11 @@ rooms = [
 
 def home(req):
     print(req.method)
-    return render(req, 'base/home.html')
+    return render(req, 'base/home.html', context={"rooms":rooms})
 
-def room(req):
-    return render(req, 'base/room.html', context={"rooms":rooms})
+def room(req, pk):
+    print(pk)
+    for item in rooms:
+        if item["id"] == int(pk):
+            room = item
+    return render(req, 'base/room.html', context={"room":room})
