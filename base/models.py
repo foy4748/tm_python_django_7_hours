@@ -21,6 +21,9 @@ class Room(models.Model):
     # auto_now updates each time we save/update the row
     created = models.DateTimeField(auto_now_add=True)
 
+    class Meta:
+        ordering = ['-updated', '-created']
+
     def __str__(self):
         return self.name
 
