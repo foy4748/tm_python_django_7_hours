@@ -6,7 +6,8 @@
 <ul>
     {% for room in rooms %}
 	<li> <a href="{% url 'room' room.id %}">{{room.id}}. {{room.name}}</a>
-		<button type="button"><a href="{% url 'update_room' room.id %}">Edit</a></button>
+		<button class="btn" type="button"><a href="{% url 'update_room' room.id %}">Edit</a></button>
+		<button class="btn" type="button"><a href="{% url 'delete_room' room.id %}">Delete</a></button>
 	</li>
     {% endfor %}
 </ul>
