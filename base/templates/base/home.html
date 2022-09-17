@@ -1,14 +1,37 @@
 {% extends "index.html" %}
 
 {% block content %}
-<h1>HOME</h1>
-	<a href="{% url 'create-room' %}">Create a Room</a>
-<ul>
-    {% for room in rooms %}
+<section class="container">
+  <div class="row">
+  <div class="col-md-2 border border-start-0">
+    <div class="container">
+      <h1>Topics</h1>
+      <hr>
+
+      <a href="{% url 'home' %}">All Topics</a>
+      <ol>
+	{% for topic in topics %}
+	<li><a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a></li>
+	{% endfor %}
+      </ol>
+    </div>
+  </div>
+  <div class="col-md-10">
+    <div class="container ms-4">
+      <h1>HOME</h1>
+      <a href="{% url 'create-room' %}">Create a Room</a>
+      <ul>
+	{% for room in rooms %}
 	<li> <a href="{% url 'room' room.id %}">{{room.id}}. {{room.name}}</a>
-		<button class="btn" type="button"><a href="{% url 'update_room' room.id %}">Edit</a></button>
-		<button class="btn" type="button"><a href="{% url 'delete_room' room.id %}">Delete</a></button>
+	  <button class="btn" type="button"><a href="{% url 'update_room' room.id %}">Edit</a></button>
+	  <button class="btn" type="button"><a href="{% url 'delete_room' room.id %}">Delete</a></button>
 	</li>
-    {% endfor %}
-</ul>
+	{% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  </div>
+
+</section>
 {% endblock %}
