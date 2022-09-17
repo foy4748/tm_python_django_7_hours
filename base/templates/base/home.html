@@ -20,14 +20,14 @@
     <div class="container ms-4">
       <h1>HOME</h1>
       <a href="{% url 'create-room' %}">Create a Room</a>
-      <ul>
+      <ol>
 	{% for room in rooms %}
-	<li> <a href="{% url 'room' room.id %}">{{room.id}}. {{room.name}}</a>
+	<li> <a href="{% url 'room' room.id %}">{{room.name}}</a>
 	  <button class="btn" type="button"><a href="{% url 'update_room' room.id %}">Edit</a></button>
 	  <button class="btn" type="button"><a href="{% url 'delete_room' room.id %}">Delete</a></button>
 	</li>
 	{% endfor %}
-      </ul>
+      </ol>
     </div>
   </div>
 

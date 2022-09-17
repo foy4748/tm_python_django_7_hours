@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 #from django.http import HttpResponse
+from django.db.models import Q
 
 from .models import Room, Message, Topic
 from .forms import RoomForm
@@ -8,11 +9,22 @@ from .forms import RoomForm
 
 def home(req):
     q = req.GET.get('q')
+
+    if req.method == 'POST':
+        q = req.POST.get('q')
+
     rooms = Room.objects.all()
     topics = Topic.objects.all()
     if q is not None:
+        print(q)
         #rooms = Room.objects.filter(topic__name=q)
-        rooms = Room.objects.filter(topic__name__icontains=q)
+        #rooms = Room.objects.filter(topic__name__icontains=q)
+
+        # Skim through the db.sqlite3 file then you will understand how to 
+        # write these Q-filters 
+        # foreignTable__foreignField__option  <<< That's the format
+        rooms = Room.objects.filter(Q(topic__name__icontains=q) | Q(name__icontains=q) | Q(description__icontains=q) | Q(host__username=q))
+
     return render(req, 'base/home.html', context={"rooms":rooms, "topics":topics})
 
 def room(req, pk):

@@ -24,6 +24,17 @@
             >
           </li>
         </ul>
+        <form class="d-flex" role="search" action="" method="POST">
+          {% csrf_token %}
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search rooms..."
+            aria-label="Search"
+            name="q"
+          />
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
       </div>
     </div>
   </nav>
